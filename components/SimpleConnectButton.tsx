@@ -62,7 +62,7 @@ export function SimpleConnectButton() {
                 </button>
               ))}
             </div>
-            {error && <span className="text-pink-500 text-xs mt-6 block text-center font-bold">{error.shortMessage || error.message}</span>}
+            {error && <span className="text-pink-500 text-xs mt-6 block text-center font-bold">{error.message}</span>}
           </div>
         </div>
       )}
