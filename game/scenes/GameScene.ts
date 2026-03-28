@@ -7,7 +7,7 @@ const CELL_SIZE = 70;
 const X_OFFSET = 40;
 const Y_OFFSET = 180;
 
-const XY_OFFSET = { x: 40, y: 180 };
+
 
 interface LevelConfig {
     moves: number;
@@ -244,9 +244,9 @@ export default class GameScene extends Phaser.Scene {
         }
     }
 
-    async processCombo(r1: number, c1: number, r2: number, c2: number, candy1: any, candy2: any, s1: string, s2: string) {
-        const type1 = candy1.getData('type');
-        const type2 = candy2.getData('type');
+    async processCombo(r1: number, c1: number, r2: number, c2: number, candy1: Phaser.GameObjects.Sprite | null, candy2: Phaser.GameObjects.Sprite | null, s1: string, s2: string) {
+        const type1 = candy1?.getData('type') ?? 0;
+        const type2 = candy2?.getData('type') ?? 0;
         const allMatched = new Set<string>();
 
         allMatched.add(`${r1},${c1}`);
@@ -271,9 +271,11 @@ export default class GameScene extends Phaser.Scene {
                 allMatched.add(`${r2},${i}`);
                 allMatched.add(`${i},${c2}`);
             }
-            this.createBeam(candy1.x, candy1.y, true);
-            this.createBeam(candy1.x, candy1.y, false);
-            this.createExplosion(candy1.x, candy1.y);
+            const cx = candy1?.x ?? 0;
+            const cy = candy1?.y ?? 0;
+            this.createBeam(cx, cy, true);
+            this.createBeam(cx, cy, false);
+            this.createExplosion(cx, cy);
         }
 
         const matchArray = Array.from(allMatched).map(s => {
@@ -421,7 +423,7 @@ export default class GameScene extends Phaser.Scene {
         return { horizontalMatches, verticalMatches };
     }
 
-    async processMatches(matchGroups: { horizontalMatches: any[], verticalMatches: any[] }) {
+    async processMatches(matchGroups: { horizontalMatches: { r: number; c: number; type: number }[][]; verticalMatches: { r: number; c: number; type: number }[][] }) {
         const { horizontalMatches, verticalMatches } = matchGroups;
         const allMatched = new Set<string>();
         const specialCreations: { r: number, c: number, type: number, special: string }[] = [];
@@ -456,7 +458,7 @@ export default class GameScene extends Phaser.Scene {
 
         // Identify matches and handle existing special activations
         [...horizontalMatches, ...verticalMatches].forEach(match => {
-            match.forEach((m: any) => {
+            match.forEach((m: { r: number; c: number; type: number }) => {
                 allMatched.add(`${m.r},${m.c}`);
                 const candy = this.grid[m.r][m.c];
                 if (candy && candy.getData('special') !== 'none') {
@@ -471,8 +473,8 @@ export default class GameScene extends Phaser.Scene {
         // Intersection (Wrapped) takes priority!
         Array.from(allMatched).forEach(s => {
             const [r, c] = s.split(',').map(Number);
-            const inH = horizontalMatches.some(m => m.some((mc: any) => mc.r === r && mc.c === c));
-            const inV = verticalMatches.some(m => m.some((mc: any) => mc.r === r && mc.c === c));
+            const inH = horizontalMatches.some(m => m.some((mc: { r: number; c: number }) => mc.r === r && mc.c === c));
+            const inV = verticalMatches.some(m => m.some((mc: { r: number; c: number }) => mc.r === r && mc.c === c));
             if (inH && inV) {
                 specialGrid[`${r},${c}`] = 'wrapped';
             }
@@ -548,7 +550,6 @@ export default class GameScene extends Phaser.Scene {
 
         // Create new special candies (if their spot is empty or was just cleared)
         specialCreations.forEach(sc => {
-            const texture = sc.special === 'color-bomb' ? 'special_bomb' : `candy_${sc.type}`;
             const sprite = this.spawnCandy(sc.r, sc.c, sc.type, true);
             this.grid[sc.r][sc.c] = sprite;
             

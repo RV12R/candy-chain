@@ -26,18 +26,18 @@ export default function Leaderboard() {
       ];
 
       try {
-        const { data, error } = await supabase
+        const { data, error: _dbError } = await supabase
           .from('daily_leaderboard')
           .select('*')
           .limit(10);
         
         if (data && data.length > 0) {
-          setEntries(data as any);
+          setEntries(data as LeaderboardEntry[]);
         } else {
-          setEntries(mockData as any);
+          setEntries(mockData as LeaderboardEntry[]);
         }
-      } catch (e) {
-        setEntries(mockData as any);
+      } catch (_e) {
+        setEntries(mockData as LeaderboardEntry[]);
       } finally {
         setLoading(false);
       }

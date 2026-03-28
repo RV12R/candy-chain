@@ -30,7 +30,7 @@ const PRIZE_VAULT_ADDRESS = '0x0000000000000000000000000000000000000000';
 function PrizesDashboard() {
   const { address, isConnected } = useAccount();
   
-  const { data: claimableAmount, refetch } = useReadContract({
+  const { data: claimableAmount } = useReadContract({
     address: PRIZE_VAULT_ADDRESS as `0x${string}`,
     abi: PRIZE_VAULT_ABI,
     functionName: 'claimableAmounts',
