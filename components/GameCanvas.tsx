@@ -58,8 +58,7 @@ export default function GameCanvas() {
       <div className="p-2 sm:p-3 rounded-2xl bg-slate-900 shadow-xl border border-slate-800">
         <div 
           id="phaser-container" 
-          className="relative rounded-xl overflow-hidden bg-black touch-none w-full sm:w-[420px] aspect-[2/3]" 
-          style={{ touchAction: 'none' }}
+          className="relative rounded-xl overflow-hidden bg-black w-full sm:w-[420px] aspect-[2/3]" 
         />
       </div>
       

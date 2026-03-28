@@ -14,7 +14,7 @@ const GameCanvas = dynamic(() => import('@/components/GameCanvas'), {
 
 export default function Play() {
   return (
-    <main className="flex-1 flex flex-col min-h-[calc(100vh-80px)] bg-[#020617] relative overflow-hidden">
+    <main className="flex-1 flex flex-col min-h-[calc(100vh-80px)] bg-[#020617] relative">
       {/* Immersive Background Gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(236,72,153,0.1),_transparent_60%)]"></div>
       <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[120px]"></div>

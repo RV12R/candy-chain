@@ -17,6 +17,9 @@ export const config: Phaser.Types.Core.GameConfig = {
   },
   input: {
     activePointers: 3,
+    touch: {
+      capture: false
+    }
   },
   render: {
     pixelArt: false,
