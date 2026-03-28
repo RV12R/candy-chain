@@ -26,7 +26,7 @@ export default function Leaderboard() {
       ];
 
       try {
-        const { data, error: _dbError } = await supabase
+        const { data } = await supabase
           .from('daily_leaderboard')
           .select('*')
           .limit(10);
@@ -36,6 +36,7 @@ export default function Leaderboard() {
         } else {
           setEntries(mockData as LeaderboardEntry[]);
         }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (_e) {
         setEntries(mockData as LeaderboardEntry[]);
       } finally {

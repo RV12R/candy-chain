@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 export default function GameCanvas() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const gameRef = useRef<any>(null);
   const [score, setScore] = useState(0);
 
