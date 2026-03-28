@@ -2,8 +2,6 @@
 
 Candy Chain is a complete, production-ready Web3 Match-3 puzzle game. Players clear dynamic candy grids via a highly-optimized Phaser 3 engine to earn off-chain arcade points, which seamlessly convert to on-chain `$CRUSH` token rewards through automated Serverless API integrations. 
 
-![Arcade Cabinet Demo](./public/assets/preview.png)
-
 ![Phaser 3](https://img.shields.io/badge/Phaser.js-3-orange) ![Next.js](https://img.shields.io/badge/Next.js-15-black) ![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-V4-blue) ![Base Sepolia](https://img.shields.io/badge/Base-Sepolia-blue) ![Supabase](https://img.shields.io/badge/Supabase-DB-green)
 
 ---
@@ -14,11 +12,6 @@ Candy Chain is a complete, production-ready Web3 Match-3 puzzle game. Players cl
 - **Native Web3 Injections**: Bypass heavy external library downloads using an ultra-fast bespoke Wagmi native dropdown modal.
 - **Auto-Calculated Rewards**: Backend services automatically allocate `$CRUSH` token smart-contract claims based on the Supabase daily Hall of Fame. 
 - **60fps Neon Arcade Graphics**: Highly optimized gradient mapping and Phaser canvas scaling simulating a neon arcade cabinet natively in the DOM.
-
----
-
-## 🔗 Official Repository
-**[https://github.com/RV12R/candy-chain](https://github.com/RV12R/candy-chain)**
 
 ---
 
