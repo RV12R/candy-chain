@@ -1,0 +1,16 @@
+{
+  "name": "Candy Chain",
+  "short_name": "CandyChain",
+  "description": "Web3 match-3 puzzle game on Base L2",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#ec4899",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}
